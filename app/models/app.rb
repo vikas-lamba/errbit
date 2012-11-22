@@ -103,7 +103,13 @@ class App
   end
 
   def github_url_to_file(file)
-    "#{github_url}/blob/#{repo_branch}/#{file}"
+    if name.include?("webui") 
+      "#{github_url}/blob/#{repo_branch}/src/webui/#{file}"
+    elsif name.include?("api")
+      "#{github_url}/blob/#{repo_branch}/src/api/#{file}"
+    else
+    "#{github_url}/blob/#{repo_branch + file}"
+    end
   end
 
   def bitbucket_repo?
